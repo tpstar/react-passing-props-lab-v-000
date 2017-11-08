@@ -1,20 +1,17 @@
-import React, { Component }  from 'react';
+import React from 'react';
 
 import Filter from './Filter';
 import FilteredFruitList from './FilteredFruitList.js';
 
-const FruitBasket = ({fruit, filters, updateFilterCallback, list}) => {
+const FruitBasket = ({fruit, filters, currentFilter, updateFilterCallback}) => {
 
-  const handleFilterChange = event => {
-    console.log('new filter: ', event.target.value);
-    // this.setState({ selectedFilter: event.target.value });
-  }
+
 
   return (
     <div className="fruit-basket">
-      <Filter handleChange={handleFilterChange} filters={filters}/>
+      <Filter handleChange={updateFilterCallback} filters={filters}/>
       <FilteredFruitList
-        list={list} />
+        fruit={fruit} filter={currentFilter}/>
     </div>
   );
 

@@ -31,11 +31,17 @@ class App extends React.Component {
       .then(filters => this.setState({ filters }));
   }
 
+  handleFilterChange = event => {
+    this.setState({
+      currentFilter: event.target.value
+      // fruit: !this.state.currentFilter || this.state.currentFilter === 'all' ? this.state.fruit : this.state.fruit.filter(i => i.fruit_type === currentFilter)
+    });
+  }
+
   render() {
-    // const list = this.state.fruit;
-    //!this.props.currentFilter || this.props.currentFilter === 'all' ? this.state.items : this.state.items.currentFilter(i => i.fruit_type === this.props.currentFilter);
+
     return (
-      <FruitBasket filters={this.state.filters} selectedFilter={this.state.currentFilter} list={this.state.fruit}/>
+      <FruitBasket fruit={this.state.fruit} filters={this.state.filters} currentFilter={this.state.currentFilter} updateFilterCallback={this.handleFilterChange}/>
     )
   }
 }
